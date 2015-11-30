@@ -8,14 +8,15 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @category = Category.find(params[:category_id])
+    @article = Article.new
   end
 
   def create
     @article = Article.new(article_params)
 
-    if @article.save?
-      redirect_to @article
+    if @article.save
+      redirect_to category_articles_path
     else
       render :new
     end

@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_category
+
   def index
     @articles = Article.all
   end
@@ -8,14 +10,14 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @article = Article.new
   end
 
   def create
     @article = Article.new(article_params)
 
-    if @article.save?
-      redirect_to @article
+    if @article.save
+      redirect_to category_articles_path
     else
       render :new
     end
@@ -45,5 +47,9 @@ class ArticlesController < ApplicationController
 
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.find(params[:category_id])
     end
 end

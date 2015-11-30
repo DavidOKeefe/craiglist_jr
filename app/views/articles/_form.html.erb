@@ -1,1 +1,16 @@
-_form.html.erb
+<%= form_for [@category, @article] do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name, size: "50" %><br>
+
+  <%= f.label :description %>:
+  <%= f.text_area :description, size: "30x10" %><br>
+
+  <%= f.label :price %>:
+  <%= f.text_field :price %><br>
+
+  <%= f.submit %>
+<% end %>
+
+
+
+

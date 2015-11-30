@@ -3,10 +3,11 @@ class ArticlesController < ApplicationController
   before_action :set_category
 
   def index
-    @articles = Article.all
+    @articles = Article.where(category: @category)
   end
 
   def show
+
   end
 
   def new

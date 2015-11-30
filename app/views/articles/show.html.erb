@@ -1,2 +1,8 @@
-show.html.erb
- number_to_currency(number)
+<h1> <%= @article.name %> </h3>
+
+<p> <%= @article.description %> <p>
+<p><%= @article.price %> <p>
+
+
+<%= link_to 'Edit', edit_category_article_path(@category, @article) %>
+

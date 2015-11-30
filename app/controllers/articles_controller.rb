@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_category
+
   def index
     @articles = Article.all
   end
@@ -8,7 +10,6 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @category = Category.find(params[:category_id])
     @article = Article.new
   end
 
@@ -46,5 +47,9 @@ class ArticlesController < ApplicationController
 
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.find(params[:category_id])
     end
 end
